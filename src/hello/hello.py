@@ -33,4 +33,4 @@ def make_greeting(name, formality):
 if __name__ == "__main__":
     # Ignored missing parameter lint, since the click library passes the
     # arguments in from the command line for us
-    main() # pylint:disable=no-value-for-parameter
+    main()  # pylint:disable=no-value-for-parameter
