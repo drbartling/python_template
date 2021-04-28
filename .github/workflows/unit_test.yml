@@ -7,7 +7,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: [2.7, 3.X]
+        python-version: [2.7]
         os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
