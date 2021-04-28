@@ -1,0 +1,29 @@
+name: Unit Tests
+
+on: [pull_request]
+
+jobs:
+  unit-test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        python-version: [2.7, 3.X]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      # Checks out repository for other checks to run
+      - uses: actions/checkout@v2
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install build dependencies
+        uses: py-actions/py-dependency-install@v2
+        with:
+          path: "requirements.dev.txt"
+
+      - name: Test with pytest
+        run: |
+          pytest

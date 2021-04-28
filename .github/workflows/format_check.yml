@@ -1,0 +1,33 @@
+
+name: Format Check
+
+on: [pull_request, push]
+
+jobs:
+  format-check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9]
+
+    steps:
+      # Checks out repository for other checks to run
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      # Check that code is formatted correctly
+      - name: Black Formatting Check
+        uses: jpetrucciani/black-check@master
+        with:
+          path: .
+
+      # Check White Space against PR Base
+      - name: Whitespace check PR
+        if: ${{ github.event_name == 'pull_request' }}
+        run: git diff origin/$GITHUB_BASE_REF origin/$GITHUB_HEAD_REF --check
+
+      # Check White Space against previous commit
+      - name: Whitespace check PUSH
+        if: ${{ github.event_name == 'Push' }}
+        run: git diff HEAD~1 --check
