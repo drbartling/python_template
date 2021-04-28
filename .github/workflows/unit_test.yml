@@ -7,7 +7,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: [2.7]
+        python-version: [2.7, 3.8, 3.X]
         os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
@@ -23,6 +23,10 @@ jobs:
         uses: py-actions/py-dependency-install@v2
         with:
           path: "requirements.dev.txt"
+
+      - name: Install self
+        run: |
+          pip install -e .
 
       - name: Test with pytest
         run: |

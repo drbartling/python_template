@@ -24,3 +24,16 @@ https://modelpredict.com/wht-requirements-txt-is-not-enough
 
 It uses `setup.cfg` without `setup.py` for a more straight-forward install.  `setup.py` can be added if customization is needed, but is not recommened.
 https://packaging.python.org/tutorials/packaging-projects/#configuring-metadata
+
+
+### Running tests
+Follow these steps to run tests
+* Set up a virtual environment `python -m virtualenv env`
+* Activate the virtual environment
+    * Linux/Mac `. env/bin/activate`
+    * Windows `.\env\Scripts\Activate`
+* Install development dependencies `pip install -r requirments.dev.txt`
+* Install this repo in editable mode `pip install -e .`
+* Run the tests `pytest`
+
+As long as the virtual environment is active, running `pytest` is all that is required.
