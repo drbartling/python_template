@@ -4,31 +4,27 @@ on: [pull_request, push]
 
 jobs:
   unit-test:
-    continue-on-error: true
+    name: ${{ matrix.name }}
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
-        python-version: [2.7, 3.8, 3.X]
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        include:
+          - {name: Linux, python: '3.9', os: ubuntu-latest, tox: py39}
+          - {name: Windows, python: '3.9', os: windows-latest, tox: py39}
+          - {name: Mac, python: '3.9', os: macos-latest, tox: py39}
+          - {name: '3.8', python: '3.8', os: ubuntu-latest, tox: py38}
+          - {name: '2.7', python: '2.7', os: ubuntu-latest, tox: py27}
 
     steps:
-      # Checks out repository for other checks to run
-      - uses: actions/checkout@v2
+      - name: Checkout repository under test
+        uses: actions/checkout@v2
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python }}
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: ${{ matrix.python }}
 
-      - name: Install build dependencies
-        uses: py-actions/py-dependency-install@v2
-        with:
-          path: "requirements.dev.txt"
-
-      - name: Install self
-        run: |
-          pip install .
-
-      - name: Test with pytest
-        run: |
-          pytest
+      - run: pip install tox
+      - name: Run pytest unit tests with tox
+        run: tox -e ${{ matrix.tox }}

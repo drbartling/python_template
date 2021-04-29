@@ -1,6 +1,5 @@
 [tool.black]
 line-length = 80
-
 target-version = ['py27', 'py38']
 
 [build-system]
