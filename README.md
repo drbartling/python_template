@@ -46,3 +46,6 @@ Follow these steps to run tests
 * Run the tests `pytest`
 
 As long as the virtual environment is active, running `pytest` is all that is required.
+
+Tests also run using github actions:
+https://github.com/features/actions
