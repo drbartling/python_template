@@ -25,6 +25,11 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
 
+      - name: Versions
+        run: |
+          python --version
+          pip --version
+
       - run: pip install tox
       - name: Run pytest unit tests with tox
         run: tox -e ${{ matrix.tox }}
