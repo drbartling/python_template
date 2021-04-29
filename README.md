@@ -21,6 +21,15 @@ https://pypi.org/project/prospector/
 It uses `requirements.in` and `requirements.txt` to split out the basic requirements from the pinned requirements, allowing for an easy update of the pinned requirements.
 https://modelpredict.com/wht-requirements-txt-is-not-enough
 
+```
+python2 -m virtualenv env
+. env/bin/activate
+pip install -r requirements.in
+pip freeze > requirements.txt
+pip install -r requirements.dev.in
+pip freeze > requirements.dev.txt
+```
+
 
 It uses `setup.cfg` without `setup.py` for a more straight-forward install.  `setup.py` can be added if customization is needed, but is not recommened.
 https://packaging.python.org/tutorials/packaging-projects/#configuring-metadata
