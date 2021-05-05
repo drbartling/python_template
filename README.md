@@ -41,7 +41,7 @@ Follow these steps to run tests
 * Activate the virtual environment
     * Linux/Mac `. env/bin/activate`
     * Windows `.\env\Scripts\Activate`
-* Install development dependencies `pip install -r requirments.dev.txt`
+* Install development dependencies `pip install -r requirements.dev.txt`
 * Install this repo in editable mode `pip install -e .`
 * Run the tests `pytest`
 
