@@ -1,4 +1,16 @@
-# Basic .gitattributes for a python repo.
+# Basic .gitattributes for most repos
+
+# Set default behavior to automatically normalize line endings.
+* text=auto
+
+# Batch scripts always use CRLF line endings
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+
+# bash scripts always use LF line endings
+*.sh text eol=lf
+
+# Python Specific attributes
 
 # Source files
 # ============
