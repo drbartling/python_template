@@ -124,13 +124,15 @@ Define direct dependencies for the application in `requirements.in`, leaving the
 Periodically update the dependencies as follows:
 
 ```bash
-python -m virtualenv env
+python2 -m virtualenv env
 . env/bin/activate
 pip install -r requirements.in
 pip freeze > requirements.txt
 pip install -r requirements.dev.in
 pip freeze > requirements.dev.txt
 ```
+
+If python 2 compatability is desired, make sure to perform the above steps using python 2.
 
 New repositories may want to consider using pip-compile: <https://github.com/jazzband/pip-tools#updating-requirements>
 
