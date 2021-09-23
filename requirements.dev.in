@@ -1,4 +1,6 @@
+black
 coverage
+pre-commit
+prospector
 pytest
 pytest-cov
-pre-commit

@@ -29,7 +29,7 @@ jobs:
         run: pip install prospector
       - name: check-branch
         run: |
-          prospector -s veryhigh -o json:branch-results.json -o text:branch-results.txt -0 --max-line-length 200
+          prospector --profile strictness_veryhigh -o json:branch-results.json -o text:branch-results.txt -0 --max-line-length 200
           cat branch-results.txt
 
       - name: checkout-target
@@ -41,7 +41,7 @@ jobs:
 
       - name: check-reference
         run: |
-          prospector -s veryhigh -o json:reference-results.json -o text:reference-results.txt -0 --max-line-length 200
+          prospector --profile strictness_veryhigh -o json:reference-results.json -o text:reference-results.txt -0 --max-line-length 200
           cat reference-results.txt
 
       - name: compare-results

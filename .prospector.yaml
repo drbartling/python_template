@@ -1,0 +1,10 @@
+strictness: veryhigh
+test-warnings: true
+doc-warnings: false
+
+pylint:
+    disable:
+        # Disabled in the interest of supporting python2
+        -   consider-using-f-string
+        # Disabled because pre-commit does not pick up dependencies
+        -   import-error

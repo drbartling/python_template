@@ -16,3 +16,9 @@ repos:
     rev: 21.9b0
     hooks:
     -   id: black
+-   repo: https://github.com/guykisel/prospector-mirror
+    rev: 7ff847e779347033ebbd9e3b88279e7f3a998b45
+    hooks:
+    -   id: prospector
+        additional_dependencies:
+        -   .
