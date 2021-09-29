@@ -32,11 +32,6 @@ jobs:
           python --version
           pip --version
 
-      - name: Install testing dependencies
-        uses: py-actions/py-dependency-install@v2
-        with:
-          path: "requirements.dev.txt"
-
       - run: pip install tox
 
       - name: Run pytest unit tests with tox
