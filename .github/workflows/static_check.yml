@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         uses: py-actions/py-dependency-install@v2
         with:
-          path: "requirements.txt"
+          path: "requirements/base-py3.txt"
 
       - name: Install Prospector
         run: pip install prospector
