@@ -2,6 +2,9 @@
 
 Template for a stand-alone python tool or script
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 - [About the Template](#about-the-template)
 - [Contributing to this project](#contributing-to-this-project)
   - [Git Branching strategy](#git-branching-strategy)
@@ -15,9 +18,10 @@ Template for a stand-alone python tool or script
 - [Running tests](#running-tests)
   - [Tox](#tox)
   - [PyTest](#pytest)
-- [Dependencies](#dependencies)
+- [Dependency management](#dependency-management)
+- [Misc.](#misc)
 
-[*Table of contents generated with `markdown-toc --no-firsth1 .\README.md`*](https://github.com/jonschlinkert/markdown-toc)
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## About the Template
 
@@ -100,9 +104,20 @@ Follow these steps to run tests using pytest, replacing `<ver>` with the appropr
 2. Activate the virtual environment
     - Linux/Mac `. env/bin/activate`
     - Windows `.\env\Scripts\Activate`
-3. Install development dependencies `pip install -r requirements.dev.txt`
+3. Install development dependencies `pip install -r .\requirements\dev-py<ver>.txt`
 4. Install this repo in editable mode `pip install -e .`
 5. Run the tests `pytest`
+
+For example, on windows with python3 run:
+
+```powershell
+python3 -m virtualenv env
+.\env\Scripts\Activate
+pip install -r .\requirements\dev-py3.txt
+pip install -e .
+pytest
+
+```
 
 This results in the following output:
 
@@ -113,24 +128,23 @@ This results in the following output:
 After the virtual environment is set up (steps 1-4 above), calling `pytest` is all you need.
 It can be useful to run a watch window in a terminal while working on the project to keep the tests running on each save. `watch -c pytest --color=yes` will keep the color highlighting and the tests running in a loop.
 
-## Dependencies
+## Dependency management
 
-Define direct dependencies for the application in `requirements.in`, leaving the dependencies un-pinned.  THat is to say, do not specify the exact version in `requirements.in`.  Rather install the dependencies and use `pip freeze` to pin them to ensure we can repeat our builds.  It uses `requirements.in` and `requirements.txt` to split out the basic requirements from the pinned requirements, allowing for an easy update of the pinned requirements. <https://modelpredict.com/wht-requirements-txt-is-not-enough>
+This project uses [pip-compile-multi](https://pypi.org/project/pip-compile-multi/) for hard-pinning dependencies versions.
+Please see its documentation for usage instructions.
+In short, `requirements/base.in` contains the list of direct requirements with occasional version constraints (like `Django<2`)
+and `requirements/base.txt` is automatically generated from it by adding recursive tree of dependencies with fixed versions.
+The same goes for `test` and `dev`.
 
-Periodically update the dependencies as follows:
+To upgrade dependency versions, run `tox -e upgrade3 -e upgrade2`.
 
-```bash
-python2 -m virtualenv env
-. env/bin/activate
-pip install -r requirements.in
-pip freeze > requirements.txt
-pip install -r requirements.dev.in
-pip freeze > requirements.dev.txt
-```
+To add a new dependency without upgrade, add it to `requirements/base.in` and run `pip-compile-multi --no-upgrade`.
 
-If python 2 compatability is desired, make sure to perform the above steps using python 2.
+For installation always use `.txt` files. For example, command `pip install -Ue . -r requirements/dev.txt` will install
+this project in development mode, testing requirements and development tools.
+Another useful command is `pip-sync requirements/dev.txt`, it uninstalls packages from your virtualenv that aren't listed in the file.
 
-New repositories may want to consider using pip-compile: <https://github.com/jazzband/pip-tools#updating-requirements>
+## Misc.
 
 It uses `setup.cfg` with a minimal `setup.py` to minimimize redundancy.  While a lot of customation can be performed in setup.py, it is not recommended.
 <https://packaging.python.org/tutorials/packaging-projects/#configuring-metadata>

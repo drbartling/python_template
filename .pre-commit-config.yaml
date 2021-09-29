@@ -23,7 +23,11 @@ repos:
         additional_dependencies:
         -   .
 -   repo: https://github.com/commitizen-tools/commitizen
-    rev: master
+    rev: v2.19.0
     hooks:
     -   id: commitizen
         stages: [commit-msg]
+-   repo: https://github.com/thlorenz/doctoc
+    rev: v2.0.1
+    hooks:
+    -   id: doctoc

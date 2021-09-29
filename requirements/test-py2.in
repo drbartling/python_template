@@ -1,0 +1,5 @@
+-r base-py2.in
+
+coverage
+pytest
+pytest-cov

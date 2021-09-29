@@ -1,0 +1,6 @@
+-r test-py3.in
+
+black
+pip-compile-multi
+prospector
+tox
