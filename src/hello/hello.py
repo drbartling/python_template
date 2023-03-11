@@ -24,9 +24,9 @@ def main(name, formal):  # pragma: no cover
 
 def make_greeting(name, formality):
     return (
-        "Greetings and felicitations, {}!".format(name)
+        f"Greetings and felicitations, {name}!"
         if formality
-        else "Hello, {}!".format(name)
+        else f"Hello, {name}!"
     )
 
 
