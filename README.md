@@ -32,4 +32,8 @@ pytest
 
 ### Building Executable
 
+```bash
+python tools/app_build.py
+```
+
 ### Building An Installer
