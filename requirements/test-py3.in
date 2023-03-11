@@ -1,5 +1,0 @@
--r base-py3.in
-
-coverage
-pytest
-pytest-cov
