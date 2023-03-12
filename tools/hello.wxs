@@ -92,5 +92,7 @@
             <ComponentRef Id='Path' />
         </Feature>
         <UIRef Id="WixUI_Minimal" />
+        <WixVariable Id="WixUILicenseRtf"
+            Value="$(var.license_file)" />
     </Product>
 </Wix>

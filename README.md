@@ -36,8 +36,9 @@ pytest
 python tools/app_build.py
 ```
 
-### Building An Installer
+### Building The Windows Installer
 
 - Install build dependencies
 	- Windows: `winget install WixToolset.AdditionalTools`
--
+- Build the installer
+	- `python tools/installer_build.py`

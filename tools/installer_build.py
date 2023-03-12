@@ -28,6 +28,7 @@ def main():
                 '-dpath_code="3432CC21-C125-454B-89A9-0155573E3C4B"',
                 f'-dproduct_version="{dist.version}"',
                 '-ddescription="Hello Greeter Application"',
+                f'-dlicense_file="{pd.license_path}"',
                 f'-dexecutable_path="{pd.executable_path}"',
                 f'-dexecutable_name="{pd.executable_path.name}"',
             ]
@@ -64,6 +65,10 @@ class ProjectDirectory:
     @property
     def root_dir(self) -> Path:
         return self.script_dir.parent
+
+    @property
+    def license_path(self) -> Path:
+        return self.root_dir / "license.rtf"
 
     @property
     def dist_dir(self) -> Path:
