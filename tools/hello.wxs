@@ -46,6 +46,12 @@
                                     Name="Hello"
                                     WorkingDirectory='InstallDirectory'
                                     Advertise="yes" />
+                                <Shortcut Id="GreetingsShortcut"
+                                    Directory="ProgramMenuCompanyFolder"
+                                    Name="Greetings"
+                                    Arguments='--formal'
+                                    WorkingDirectory='InstallDirectory'
+                                    Advertise="yes" />
                             </File>
                         </Component>
                     </Directory>
