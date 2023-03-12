@@ -25,6 +25,7 @@ def main():
                 '-dcompany_name="Acme Co"',
                 '-dproduct_name="hello"',
                 '-dupgrade_code="f1d96f59-abc1-462c-b510-0f9c3875ef58"',
+                '-dpath_code="3432CC21-C125-454B-89A9-0155573E3C4B"',
                 f'-dproduct_version="{dist.version}"',
                 '-ddescription="Hello Greeter Application"',
                 f'-dexecutable_path="{pd.executable_path}"',
