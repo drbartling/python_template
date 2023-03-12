@@ -4,9 +4,10 @@ import click
 
 
 @click.command()
-@click.argument(
-    "name",
-    default="World",
+@click.option(
+    "-n",
+    "--name",
+    prompt=True,
 )
 @click.option(
     "-f",
@@ -20,6 +21,7 @@ def main(name, formal):  # pragma: no cover
     NAME is the name of the persom or entity you wish to greet. If not provided
     we'll greet the whole world!"""
     print(make_greeting(name, formal))
+    click.pause()
 
 
 def make_greeting(name, formality):

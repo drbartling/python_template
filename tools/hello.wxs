@@ -41,15 +41,37 @@
                                 DiskId='1'
                                 Source='$(var.executable_path)'
                                 KeyPath='yes'>
+                                <Shortcut Id="StartMenuShortcut"
+                                    Directory="ProgramMenuCompanyFolder"
+                                    Name="Hello"
+                                    WorkingDirectory='InstallDirectory'
+                                    Advertise="yes" />
                             </File>
                         </Component>
                     </Directory>
+                </Directory>
+            </Directory>
+            <Directory Id="ProgramMenuFolder"
+                Name="Programs">
+                <Directory Id="ProgramMenuCompanyFolder"
+                    Name="$(var.company_name)">
+                    <Component Id='ProgramMenuCompanyFolder'
+                        Guid='*'>
+                        <RemoveFolder Id='ProgramMenuCompanyFolder'
+                            On='uninstall' />
+                        <RegistryValue Root='HKCU'
+                            Key='Software\[Manufacturer]\shortcuts'
+                            Type='string'
+                            Value=''
+                            KeyPath='yes' />
+                    </Component>
                 </Directory>
             </Directory>
         </Directory>
         <Feature Id='Complete'
             Level='1'>
             <ComponentRef Id='MainExecutable' />
+            <ComponentRef Id='ProgramMenuCompanyFolder' />
         </Feature>
         <UIRef Id="WixUI_Minimal" />
     </Product>
