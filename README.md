@@ -37,3 +37,7 @@ python tools/app_build.py
 ```
 
 ### Building An Installer
+
+- Install build dependencies
+	- Windows: `winget install WixToolset.AdditionalTools`
+-

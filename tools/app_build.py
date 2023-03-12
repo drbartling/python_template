@@ -13,4 +13,5 @@ def main():
     PyInstaller.__main__.run([str(script), "--onefile"])
 
 
-main()
+if __name__ == "__main__":
+    main()
