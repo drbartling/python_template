@@ -56,12 +56,16 @@
                                     Directory="ProgramMenuCompanyFolder"
                                     Name="Hello"
                                     WorkingDirectory='InstallDirectory'
+                                    Icon='app.ico'
+                                    IconIndex="0"
                                     Advertise="yes" />
                                 <Shortcut Id="GreetingsShortcut"
                                     Directory="ProgramMenuCompanyFolder"
                                     Name="Greetings"
                                     Arguments='--formal'
                                     WorkingDirectory='InstallDirectory'
+                                    Icon='app.ico'
+                                    IconIndex="0"
                                     Advertise="yes" />
                             </File>
                         </Component>
@@ -91,6 +95,8 @@
             <ComponentRef Id='ProgramMenuCompanyFolder' />
             <ComponentRef Id='Path' />
         </Feature>
+        <Icon Id="app.ico"
+            SourceFile="$(var.icon_path)" />
         <UIRef Id="WixUI_Minimal" />
         <WixVariable Id="WixUILicenseRtf"
             Value="$(var.license_file)" />

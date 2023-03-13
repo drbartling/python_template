@@ -29,6 +29,7 @@ def main():
                 f'-dproduct_version="{dist.version}"',
                 '-ddescription="Hello Greeter Application"',
                 f'-dlicense_file="{pd.license_path}"',
+                f'-dicon_path="{pd.icon_path}"',
                 f'-dexecutable_path="{pd.executable_path}"',
                 f'-dexecutable_name="{pd.executable_path.name}"',
             ]
@@ -61,6 +62,10 @@ class ProjectDirectory:
     @property
     def wxs_path(self) -> Path:
         return self.script_dir / "hello.wxs"
+
+    @property
+    def icon_path(self) -> Path:
+        return self.script_dir / "icon.ico"
 
     @property
     def root_dir(self) -> Path:
