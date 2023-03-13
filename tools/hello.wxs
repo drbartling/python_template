@@ -85,6 +85,11 @@
                             Type='string'
                             Value=''
                             KeyPath='yes' />
+                        <Shortcut Id="UninstallProduct"
+                            Name="Uninstall $(var.product_name)"
+                            Target="[SystemFolder]msiexec.exe"
+                            Arguments="/x [ProductCode]"
+                            Description="Uninstalls $(var.product_name)" />
                     </Component>
                 </Directory>
             </Directory>
