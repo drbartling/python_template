@@ -3,12 +3,11 @@
 import os
 import subprocess
 import uuid
-from dataclasses import dataclass
-from pathlib import Path
 
 import app_build
 import click
 import pkg_resources
+from project_directory import ProjectDirectory
 
 
 @click.command()
@@ -54,45 +53,6 @@ def main():
         capture_output=False,
         check=True,
     )
-
-
-@dataclass
-class ProjectDirectory:
-    @property
-    def script_dir(self) -> Path:
-        return Path(__file__).parent
-
-    @property
-    def wxs_path(self) -> Path:
-        return self.script_dir / "hello.wxs"
-
-    @property
-    def icon_path(self) -> Path:
-        return self.script_dir / "icon.ico"
-
-    @property
-    def root_dir(self) -> Path:
-        return self.script_dir.parent
-
-    @property
-    def license_path(self) -> Path:
-        return self.root_dir / "license.rtf"
-
-    @property
-    def dist_dir(self) -> Path:
-        return self.root_dir / "dist"
-
-    @property
-    def executable_path(self) -> Path:
-        return self.dist_dir / "hello.exe"
-
-    @property
-    def msi_path(self) -> Path:
-        return self.dist_dir / "hello.msi"
-
-    @property
-    def build_dir(self) -> Path:
-        return self.root_dir / "build"
 
 
 if __name__ == "__main__":
