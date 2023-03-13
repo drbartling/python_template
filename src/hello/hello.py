@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import click
 
 
@@ -18,8 +16,7 @@ import click
 def main(name, formal):  # pragma: no cover
     """Greet a person or entity by NAME
 
-    NAME is the name of the persom or entity you wish to greet. If not provided
-    we'll greet the whole world!"""
+    NAME is the name of the person or entity you wish to greet."""
     print(make_greeting(name, formal))
     click.pause()
 
