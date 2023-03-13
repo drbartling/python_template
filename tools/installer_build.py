@@ -1,5 +1,8 @@
+# pylint: disable=fixme
+
 import os
 import subprocess
+import uuid
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -24,8 +27,8 @@ def main():
                 str(pd.wxs_path),
                 '-dcompany_name="Acme Co"',
                 '-dproduct_name="hello"',
-                '-dupgrade_code="f1d96f59-abc1-462c-b510-0f9c3875ef58"',
-                '-dpath_code="3432CC21-C125-454B-89A9-0155573E3C4B"',
+                f'-dupgrade_code="{uuid.uuid4()}"',  # TODO: Hard code a permanent uuid
+                f'-dpath_code="{uuid.uuid4()}"',  # TODO: Hard code a permanent uuid
                 f'-dproduct_version="{dist.version}"',
                 '-ddescription="Hello Greeter Application"',
                 f'-dlicense_file="{pd.license_path}"',
